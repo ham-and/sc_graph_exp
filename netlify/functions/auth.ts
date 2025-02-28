@@ -43,7 +43,9 @@ const handler: Handler = async (event) => {
     });
 
     if (!tokenResponse.ok) {
-      throw new Error(`Token exchange failed: ${tokenResponse.statusText}`);
+      const errorResponse = await tokenResponse.json();
+      throw new Error(`Token exchange failed: ${tokenResponse.statusText} ${errorResponse.error}`);
+      // throw new Error(`Token exchange failed: ${tokenResponse.statusText}`);
     }
 
     const { access_token, refresh_token } = await tokenResponse.json();
