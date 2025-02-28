@@ -44,7 +44,7 @@ const handler: Handler = async (event) => {
 
     if (!tokenResponse.ok) {
       const errorResponse = await tokenResponse.json();
-      throw new Error(`Token exchange failed : ${tokenResponse.statusText} ${errorResponse.error}`);
+      throw new Error(`Token exchange failed: ${tokenResponse.statusText} ${errorResponse.error}`);
       // throw new Error(`Token exchange failed: ${tokenResponse.statusText}`);
     }
 
